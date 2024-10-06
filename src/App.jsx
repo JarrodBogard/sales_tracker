@@ -1,18 +1,43 @@
-import Sidebar from "./Sidebar";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import styles from "./App.module.css";
+import AppLayout from "./AppLayout";
+import CreateLead from "./CreateLead";
+import ViewLeads from "./ViewLeads";
+import Charts from "./Charts";
 
 function App() {
-  return (
-    <main className={styles.layout}>
-      <Sidebar />
-      <Header />
-    </main>
-  );
-}
+  const [leadData, setLeadData] = useState([]);
 
-function Header() {
-  return <header>Total</header>;
+  useEffect(function () {
+    async function fetchLeadData() {
+      try {
+        const response = await fetch(`http://localhost:8000/leads`);
+        const data = await response.json();
+        setLeadData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchLeadData();
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout leadData={leadData} />}>
+          <Route index element={<Navigate replace to="create" />} />
+          <Route
+            path="create"
+            element={<CreateLead onLeadData={setLeadData} />}
+          />
+          <Route path="view" element={<ViewLeads leadData={leadData} />} />
+          <Route path="charts" element={<Charts />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
