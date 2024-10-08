@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./AppLayout";
 import CreateLead from "./CreateLead";
 import ViewLeads from "./ViewLeads";
+import EditLead from "./EditLead";
 import Charts from "./Charts";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             element={<CreateLead onLeadData={setLeadData} />}
           />
           <Route path="view" element={<ViewLeads leadData={leadData} />} />
+          <Route path="edit/:id" element={<EditLead leadData={leadData} />} />
           <Route path="charts" element={<Charts />} />
         </Route>
       </Routes>

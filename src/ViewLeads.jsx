@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function ViewLead({ leadData }) {
   console.log(leadData);
   const leads = leadData.map((lead) => (
@@ -18,6 +20,8 @@ function ViewLead({ leadData }) {
       <span>{lead.ndr ? "yes" : "no"}</span>
 
       <span>{lead.notes}</span>
+      <button>Delete</button>
+      <NavLink to={`/edit/${lead.id}`}>Edit</NavLink>
     </li>
   ));
 
