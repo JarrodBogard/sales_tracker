@@ -2,7 +2,7 @@
   "leads": [
     {
       "id": "32432423",
-      "srx": true,
+      "srx": false,
       "esiSrx": true,
       "spm": false,
       "esiSpm": false,
@@ -15,22 +15,6 @@
       "flossy": false,
       "retirable": false,
       "notes": "okay"
-    },
-    {
-      "id": "32432424",
-      "srx": true,
-      "esiSrx": true,
-      "spm": true,
-      "esiSpm": true,
-      "vbc": false,
-      "intra": false,
-      "dvh": false,
-      "hra": false,
-      "charlie": true,
-      "ndr": false,
-      "flossy": false,
-      "retirable": true,
-      "notes": "nah"
     },
     {
       "id": "32432425",
@@ -63,22 +47,6 @@
       "flossy": true,
       "retirable": true,
       "notes": "what"
-    },
-    {
-      "id": "32432427",
-      "srx": false,
-      "esiSrx": false,
-      "spm": true,
-      "esiSpm": true,
-      "vbc": false,
-      "intra": false,
-      "dvh": false,
-      "hra": false,
-      "charlie": false,
-      "ndr": true,
-      "flossy": false,
-      "retirable": false,
-      "notes": "hi ya"
     },
     {
       "id": "32432428",

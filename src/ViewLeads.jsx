@@ -1,7 +1,20 @@
 import { NavLink } from "react-router-dom";
 
 function ViewLead({ leadData }) {
-  console.log(leadData);
+  function handleClick(id) {
+    async function deleteLead() {
+      try {
+        const response = await fetch(`http://localhost:8000/leads/${id}`, {
+          method: "DELETE",
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    deleteLead();
+  }
   const leads = leadData.map((lead) => (
     <li key={lead.id}>
       <span>{lead.id}</span>
@@ -20,7 +33,7 @@ function ViewLead({ leadData }) {
       <span>{lead.ndr ? "yes" : "no"}</span>
 
       <span>{lead.notes}</span>
-      <button>Delete</button>
+      <button onClick={() => handleClick(lead.id)}>Delete</button>
       <NavLink to={`/edit/${lead.id}`}>Edit</NavLink>
     </li>
   ));
