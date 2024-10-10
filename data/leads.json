@@ -5,16 +5,16 @@
       "srx": true,
       "esiSrx": true,
       "spm": true,
-      "esiSpm": false,
+      "esiSpm": true,
       "vbc": true,
-      "intra": false,
-      "dvh": false,
+      "intra": true,
+      "dvh": true,
       "hra": true,
       "charlie": true,
       "ndr": true,
       "flossy": true,
       "retirable": false,
-      "notes": "whatsssssss"
+      "notes": "Herro"
     },
     {
       "id": "32432432",
