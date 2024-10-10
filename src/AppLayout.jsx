@@ -3,11 +3,11 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import styles from "./AppLayout.module.css";
 
-function AppLayout({ leadData }) {
+function AppLayout() {
   return (
     <div className={styles.layout}>
       <Sidebar />
-      <Header leadData={leadData} />
+      <Header />
       <main className={styles.main}>
         <div className={styles.container}>
           <Outlet />

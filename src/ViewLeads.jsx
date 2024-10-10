@@ -1,21 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { useLeads } from "./leadsContext";
 
-function ViewLead({ leadData }) {
+function ViewLead() {
+  const { leads, deleteLead } = useLeads();
   function handleClick(id) {
-    async function deleteLead() {
-      try {
-        const response = await fetch(`http://localhost:8000/leads/${id}`, {
-          method: "DELETE",
-        });
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    deleteLead();
+    deleteLead(id);
   }
-  const leads = leadData.map((lead) => (
+  const leadsData = leads.map((lead) => (
     <li key={lead.id}>
       <span>{lead.id}</span>
       <span>{lead.srx ? "yes" : "no"}</span>
@@ -51,7 +42,7 @@ function ViewLead({ leadData }) {
         <h2>NDR</h2>
         <h2>Notes</h2>
       </div>
-      {leads}
+      {leadsData}
     </ul>
   );
 }

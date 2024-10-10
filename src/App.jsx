@@ -6,38 +6,22 @@ import CreateLead from "./CreateLead";
 import ViewLeads from "./ViewLeads";
 import EditLead from "./EditLead";
 import Charts from "./Charts";
+import { LeadsProvider } from "./leadsContext";
 
 function App() {
-  const [leadData, setLeadData] = useState([]);
-
-  useEffect(function () {
-    async function fetchLeadData() {
-      try {
-        const response = await fetch(`http://localhost:8000/leads`);
-        const data = await response.json();
-        setLeadData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    fetchLeadData();
-  }, []);
-
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout leadData={leadData} />}>
-          <Route index element={<Navigate replace to="create" />} />
-          <Route
-            path="create"
-            element={<CreateLead onLeadData={setLeadData} />}
-          />
-          <Route path="view" element={<ViewLeads leadData={leadData} />} />
-          <Route path="edit/:id" element={<EditLead leadData={leadData} />} />
-          <Route path="charts" element={<Charts />} />
-        </Route>
-      </Routes>
+      <LeadsProvider>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace to="create" />} />
+            <Route path="create" element={<CreateLead />} />
+            <Route path="view" element={<ViewLeads />} />
+            <Route path="edit/:id" element={<EditLead />} />
+            <Route path="charts" element={<Charts />} />
+          </Route>
+        </Routes>
+      </LeadsProvider>
     </BrowserRouter>
   );
 }

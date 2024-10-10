@@ -1,3 +1,5 @@
+import { useLeads } from "./leadsContext";
+
 function aggregateData(data) {
   const tabulatedData = {};
 
@@ -12,8 +14,11 @@ function aggregateData(data) {
   return tabulatedData;
 }
 
-function Header({ leadData }) {
-  const tabulated = leadData && aggregateData(leadData);
+function Header() {
+  const { leads } = useLeads();
+  const tabulated = leads && aggregateData(leads); // needs different logic???
+
+  if (leads.length < 1) return <p>Loading...</p>;
   return (
     <header>
       <span>SRX: {tabulated.srx}</span>
