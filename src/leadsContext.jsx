@@ -122,6 +122,12 @@ function reducer(state, action) {
         lead: initialState.lead, // is this the correct approach
       };
 
+    case "lead/reset":
+      return {
+        ...state,
+        lead: initialState.lead,
+      };
+
     default:
       throw new Error("Unknown action type");
   }
@@ -201,7 +207,15 @@ function LeadsProvider({ children }) {
 
   return (
     <LeadsContext.Provider
-      value={{ leads, lead, fetchLead, updateLeads, updateLead, deleteLead, dispatch }}
+      value={{
+        leads,
+        lead,
+        fetchLead,
+        updateLeads,
+        updateLead,
+        deleteLead,
+        dispatch,
+      }}
     >
       {children}
     </LeadsContext.Provider>

@@ -11,12 +11,13 @@ function aggregateData(data) {
       }
     })
   );
+
   return tabulatedData;
 }
 
 function Header() {
   const { leads } = useLeads();
-  const tabulated = leads && aggregateData(leads); // needs different logic???
+  const tabulated = leads && aggregateData(leads); // FIX: needs different logic???
 
   if (leads.length < 1) return <p>Loading...</p>;
   return (
@@ -37,3 +38,35 @@ function Header() {
 }
 
 export default Header;
+
+/*
+const serviceTotals = {
+  serviceA: 10,
+  serviceB: 5,
+  serviceC: 8
+};
+
+// Corresponding dollar amounts per service
+const serviceRates = {
+  serviceA: 15,  // $15 per unit for serviceA
+  serviceB: 20,  // $20 per unit for serviceB
+  serviceC: 12   // $12 per unit for serviceC
+};
+
+// Function to calculate total bonus for each service
+function calculateBonus(serviceTotals, serviceRates) {
+  const serviceBonuses = {};
+
+  for (const service in serviceTotals) {
+    if (serviceTotals.hasOwnProperty(service) && serviceRates.hasOwnProperty(service)) {
+      // Multiply the total by the rate for each service
+      serviceBonuses[service] = serviceTotals[service] * serviceRates[service];
+    }
+  }
+
+  return serviceBonuses;
+}
+
+// Example usage
+const bonuses = calculateBonus(serviceTotals, serviceRates);
+*/

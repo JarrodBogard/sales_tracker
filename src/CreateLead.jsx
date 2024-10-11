@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { useLeads } from "./leadsContext";
 import Form from "./Form";
 
 function CreateLead() {
-  const { lead, updateLeads } = useLeads();
-  // TODO: create dispatch to reset lead on component render (new useEffect? cleanup fx in context?)
+  const { lead, updateLeads, dispatch } = useLeads();
+
+  useEffect(function () {
+    dispatch({ type: "lead/reset" });
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (!lead.id) return;
