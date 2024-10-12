@@ -1,0 +1,9 @@
+header {
+  margin: 1.5rem auto 0;
+}
+
+header span {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.1);
+}

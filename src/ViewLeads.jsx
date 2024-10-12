@@ -1,26 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { useLeads } from "./leadsContext";
+import styles from "./ViewLeads.module.css";
 import Lead from "./Lead";
 
-function ViewLead() {
+function ViewLeads() {
   // const leadsData = leads.map((lead) => <Lead key={lead.id} lead={lead} />);
 
   return (
-    <ul>
-      <div style={{ display: "flex" }}>
-        <h2>Lead Id</h2>
-        <h2>SRX</h2>
-        <h2>SPM</h2>
-        <h2>VBC</h2>
-        <h2>Intra</h2>
-        <h2>DVH</h2>
-        <h2>HRA</h2>
-        <h2>NDR</h2>
-        <h2>Notes</h2>
+    <div className={styles.table}>
+      <div className={styles.header}>
+        <span>Lead Id</span>
+        <span>SRX</span>
+        <span>SPM</span>
+        <span>VBC</span>
+        <span>Intra</span>
+        <span>DVH</span>
+        <span>HRA</span>
+        <span>NDR</span>
+        <span>Notes</span>
       </div>
-      <Lead />
-    </ul>
+      <ul>
+        <Lead />
+      </ul>
+    </div>
   );
 }
 
-export default ViewLead;
+export default ViewLeads;

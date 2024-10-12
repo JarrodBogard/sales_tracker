@@ -1,0 +1,7 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr); /* Match the header grid */
+  gap: 10px;
+  text-align: center; /* Center the lead data */
+  padding: 20px 0;
+}

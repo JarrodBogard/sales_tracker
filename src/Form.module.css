@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+form div {
+  display: inline-block;
+}
+
+form div:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+
+form div:first-child input {
+  width: 4.25rem;
+}
+
+form div:last-of-type input {
+  width: 8.5rem;
+  margin-right: 0.5rem;
+}
+
+form button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+}

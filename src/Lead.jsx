@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useLeads } from "./leadsContext";
+import styles from "./Lead.module.css";
 function Lead() {
   const { leads, deleteLead } = useLeads();
   function handleClick(id) {
@@ -7,7 +8,7 @@ function Lead() {
   }
 
   const leadsData = leads.map((lead) => (
-    <li key={lead.id}>
+    <li key={lead.id} className={styles.row}>
       <span>{lead.id}</span>
       <span>{lead.srx ? "yes" : "no"}</span>
 

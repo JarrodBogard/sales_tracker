@@ -1,4 +1,5 @@
 import { useLeads } from "./leadsContext";
+import styles from "./Header.module.css";
 
 function aggregateData(data) {
   const tabulatedData = {};
@@ -15,24 +16,66 @@ function aggregateData(data) {
   return tabulatedData;
 }
 
+function calculateBonuses(tabulated, rates) {
+  const bonuses = {};
+
+  for (const service in tabulated) {
+    if (tabulated.hasOwnProperty(service) && rates.hasOwnProperty(service)) {
+      bonuses[service] = tabulated[service] * rates[service];
+    }
+  }
+  return bonuses;
+}
+
+function calculateBonusTotal(bonuses) {
+  let total = 0;
+
+  for (const bonus in bonuses) {
+    total += bonuses[bonus];
+  }
+  return total;
+}
+
 function Header() {
   const { leads } = useLeads();
+  const rates = {
+    srx: 12,
+    spm: 11,
+    vbc: 8,
+  };
   const tabulated = leads && aggregateData(leads); // FIX: needs different logic???
+  const bonuses = tabulated && calculateBonuses(tabulated, rates);
+  const bonusTotal = bonuses && calculateBonusTotal(bonuses);
+  const bonusesArray = Object.entries(bonuses);
+
+  const bonusesComponent = (
+    <ul>
+      {bonusesArray.map(([service, value]) => (
+        <li key={service}>
+          <span>{service.toUpperCase()}:</span>
+          <span>{value}</span>
+        </li>
+      ))}
+    </ul>
+  );
 
   if (leads.length < 1) return <p>Loading...</p>;
   return (
     <header>
-      <span>SRX: {tabulated.srx}</span>
-      <span>ESI-SRX: {tabulated.esiSrx}</span>
-      <span>SPM: {tabulated.spm}</span>
-      <span>ESI-SPM: {tabulated.esiSpm}</span>
+      <span>
+        SRX: {tabulated.srx} (${bonuses.srx})
+      </span>
+      <span>
+        SPM: {tabulated.spm} (${bonuses.spm})
+      </span>
       <span>VBC: {tabulated.vbc}</span>
-      <span>hra: {tabulated.hra}</span>
+      <span>HRA: {tabulated.hra}</span>
       <span>Intra: {tabulated.intra}</span>
       <span>DVH: {tabulated.dvh}</span>
       <span>Flossy: {tabulated.flossy}</span>
       <span>Retirable: {tabulated.retirable}</span>
       <span>NDR: {tabulated.ndr}</span>
+      <span>Total: ${bonusTotal}</span>
     </header>
   );
 }
