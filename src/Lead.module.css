@@ -3,5 +3,31 @@
   grid-template-columns: repeat(11, 1fr); /* Match the header grid */
   gap: 10px;
   text-align: center; /* Center the lead data */
-  padding: 20px 0;
+  align-items: center;
+  margin: 5px 0;
+  padding: 5px 0;
+}
+
+.row:nth-child(2n) {
+  background-color: whitesmoke;
+  color: #545151;
+}
+
+.row button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.row a {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.row span:last-of-type {
+  overflow: hidden;
 }

@@ -1,4 +1,4 @@
-import { HiArchiveBoxArrowDown } from "react-icons/hi2";
+import { HiMiniFolderPlus } from "react-icons/hi2";
 import { useLeads } from "./leadsContext";
 import styles from "./Form.module.css";
 
@@ -6,9 +6,10 @@ function Form({ create, buttonText, onSubmit }) {
   const { lead, dispatch } = useLeads();
 
   return (
+    // <form onSubmit={onSubmit} className={!create ? styles.altForm : ""}>
     <form onSubmit={onSubmit}>
       <div>
-        <label htmlFor="lead">Lead Id: </label>
+        <label htmlFor="lead">Lead Id: {lead.id}</label>
         {create && (
           <input
             className={styles.leadId}
@@ -193,8 +194,7 @@ function Form({ create, buttonText, onSubmit }) {
       </div>
 
       <button>
-        <HiArchiveBoxArrowDown size={16} />
-        {/* {buttonText} */}
+        <HiMiniFolderPlus size={22} />
       </button>
     </form>
   );

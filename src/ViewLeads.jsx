@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-import { useLeads } from "./leadsContext";
 import styles from "./ViewLeads.module.css";
 import Lead from "./Lead";
 

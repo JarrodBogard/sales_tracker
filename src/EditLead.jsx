@@ -22,7 +22,7 @@ function EditLead() {
   if (!lead.id || lead.id !== id) return <p>Loading...</p>;
   return (
     <div>
-      <h1>{lead.id}</h1>
+      {/* <h1>{lead.id}</h1> */}
       <Form buttonText="edit" onSubmit={handleSubmit} />
     </div>
   );

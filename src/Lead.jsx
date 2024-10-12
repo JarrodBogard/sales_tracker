@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { HiMiniTrash, HiOutlinePencilSquare } from "react-icons/hi2";
+
 import { useLeads } from "./leadsContext";
 import styles from "./Lead.module.css";
 function Lead() {
@@ -25,8 +27,12 @@ function Lead() {
       <span>{lead.ndr ? "yes" : "no"}</span>
 
       <span>{lead.notes}</span>
-      <button onClick={() => handleClick(lead.id)}>Delete</button>
-      <NavLink to={`/edit/${lead.id}`}>Edit</NavLink>
+      <button onClick={() => handleClick(lead.id)}>
+        <HiMiniTrash size={22} />
+      </button>
+      <NavLink to={`/edit/${lead.id}`}>
+        <HiOutlinePencilSquare size={22} />
+      </NavLink>
     </li>
   ));
 
